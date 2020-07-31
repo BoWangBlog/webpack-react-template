@@ -1,0 +1,25 @@
+{
+  "name": "webpack-react-template",
+  "version": "1.0.0",
+  "description": "A react project template based on webpack for create-react-app-cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webbx/webpack-react-template.git"
+  },
+  "keywords": [
+    "webpack",
+    "react",
+    "project",
+    "template"
+  ],
+  "author": "bo.wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/webbx/webpack-react-template/issues"
+  },
+  "homepage": "https://github.com/webbx/webpack-react-template#readme"
+}
