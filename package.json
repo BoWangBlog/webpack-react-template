@@ -1,24 +1,29 @@
 {
-  "name": "{{ name }}",
-  "version": "1.0.0",
-  "description": "{{ description }}",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "mobx": "^5.15.4",
-    "mobx-react": "^6.2.5"
-  },
-  "keywords": [
-    "webpack",
-    "react",
-    "project",
-    "template"
-  ],
-  "author": "{{ author }}",
-  "license": "ISC"
+    "name": "{{ name }}",
+    "version": "1.0.0",
+    "description": "{{ description }}",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-router-dom": "^5.2.0",
+        "mobx": "^5.15.4",
+        "mobx-react": "^6.2.5"
+    },
+    "devDependencies": {
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12",
+        "webpack-merge": "^5.0.9"
+    },
+    "keywords": [
+        "webpack",
+        "react",
+        "project",
+        "template"
+    ],
+    "author": "{{ author }}",
+    "license": "ISC"
 }
