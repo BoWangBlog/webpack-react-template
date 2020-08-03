@@ -56,19 +56,20 @@ const devConfig = {
             analyzerPort: 8899
         }),
 
-		new HtmlWebpackPlugin({
-			title: '我是项目title',
-			template: './src/app/index.html',
-			// 打包出来的文件名称
-			filename: 'index.html',
-			// 是否加上hash，默认false
-			hash: false,
-			// 最小化输出方式
-			minify: {
-				removeAttributeQuotes: false, // 是否删除属性的双引号
-				collapseWhitespace: true // 是否折叠空白
-			}
-		}),
+        new HtmlWebpackPlugin({
+            title: '我是开发环境项目title',
+            template: './src/app/index.html',
+            // 打包出来的文件名称
+            filename: 'index.html',
+            // 是否加上hash，默认false
+            hash: false,
+            // 最小化输出方式
+            minify: {
+                removeAttributeQuotes: false, // 是否删除属性的双引号
+                collapseWhitespace: true // 是否折叠空白
+            },
+            antd: '^4.5.2'
+        }),
 
         new FriendlyErrorsPlugin({
             compilationSuccessInfo: {

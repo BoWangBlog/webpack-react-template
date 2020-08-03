@@ -11,9 +11,9 @@ import { withRouter, Switch, Redirect } from 'react-router-dom';
 class ContentMain extends Component {
     render() {
         return (
-            <section style={{ padding: 20, position: 'relative' }}>
+            <section style={{ height: 'calc(100vh - 134px)', position: 'relative' }}>
+                hello, 我是一个组件，剩下的需要你自由发挥
                 <Switch>
-                    hello, 我是一个组件，剩下的需要你自由发挥
                     <Redirect exact from="/" to="/home" />
                 </Switch>
             </section>

@@ -7,8 +7,9 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 import ContentMain from '@components/ContentMain';
+import appStore from '../appStore';
 
-const { Sider, Content } = Layout;
+const { Content, Header, Footer } = Layout;
 
 export default class Index extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ export default class Index extends Component {
         this.state = {
             collapsed: false
         };
+        console.log(appStore.menuList);
     }
 
     toggle = () => {
@@ -28,18 +30,13 @@ export default class Index extends Component {
 
     render() {
         return (
-            <div id="page">
-                <Layout>
-                    <Sider collapsible trigger={null} collapsed={this.state.collapsed}>
-                        我是左侧菜单，你也可以把我写成组件
-                    </Sider>
-                    <Layout>
-                        <Content>
-                            <ContentMain />
-                        </Content>
-                    </Layout>
-                </Layout>
-            </div>
+            <Layout>
+                <Header style={{ padding: 0, background: '#7dbcea' }}>我是头部</Header>
+                <Content style={{ background: 'white' }}>
+                    <ContentMain />
+                </Content>
+                <Footer style={{ textAlign: 'center', background: '#f0f2f5' }}>Wangbo ©2018</Footer>
+            </Layout>
         );
     }
 }

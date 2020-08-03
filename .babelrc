@@ -19,6 +19,13 @@
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-proposal-export-default-from",
         "@babel/plugin-transform-react-constant-elements",
+		[
+			"import",
+			{
+				"libraryName": "antd",
+				"style": "css"
+			}
+		],
         [
             "@babel/plugin-transform-runtime",
             {

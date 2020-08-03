@@ -9,14 +9,14 @@ import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 import { ConfigProvider } from 'antd';
+import '@assets/css/common.less';
 import history from '@utils/history';
-import store from './store';
 import Main from './app';
 
 ReactDOM.render(
     <Router history={history}>
         <ConfigProvider>
-            <Provider {...store}>
+            <Provider>
                 <Main />
             </Provider>
         </ConfigProvider>
