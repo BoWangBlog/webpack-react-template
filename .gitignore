@@ -7,3 +7,9 @@
 *.iml
 out
 gen
+node_modules
+.vscode
+package-lock.json
+yarn.lock
+cache/
+/dist/
