@@ -1,5 +1,5 @@
 {
-    "name": "{{ name }}",
+	"name": "webpack-react-project",
     "version": "1.0.0",
     "description": "{{ description }}",
     "main": "index.js",
