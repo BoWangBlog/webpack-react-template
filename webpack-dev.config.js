@@ -11,6 +11,7 @@ const { merge } = require('webpack-merge');
 const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const notifier = require('node-notifier');
 
 const commonConfig = require('./webpack-common.config');
 const serverConfig = require('./server-config');
@@ -33,7 +34,7 @@ const serverMock = serverConfig.useMock
 const devConfig = {
     mode: 'development',
 
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'eval-cheap-module-source-map',
 
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
@@ -74,6 +75,15 @@ const devConfig = {
         new FriendlyErrorsPlugin({
             compilationSuccessInfo: {
                 messages: ['You application is running here http://localhost:4000']
+            },
+            // 错误日提示
+            onErrors: (severity, errors) => {
+                const error = errors[0];
+                notifier.notify({
+                    title: 'webpack编译失败',
+                    message: `${severity}: ${error.name}`,
+                    subtitle: error.file || ''
+                });
             }
         })
     ]

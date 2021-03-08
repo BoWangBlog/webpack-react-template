@@ -21,9 +21,7 @@ export const basicService = new Proxy(wbaxios, {
 });
 
 wbaxios.interceptors.response.use(
-    resp => {
-        return resp.data;
-    },
+    resp => resp.data,
     error => {
         let msg = '';
         if (error.response) {

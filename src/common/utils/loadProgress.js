@@ -23,11 +23,10 @@ class LoadProgressComponent extends React.Component {
     }
 }
 
-const LoadProgress = component => {
-    return Loadable({
+const LoadProgress = component =>
+    Loadable({
         loader: component,
         loading: () => <LoadProgressComponent />
     });
-};
 
 export default LoadProgress;

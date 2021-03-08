@@ -8,6 +8,7 @@
 const { merge } = require('webpack-merge');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -19,7 +20,7 @@ const cdnVersion = require('./cdn-version.json');
 const mainConfig = {
     mode: 'production',
     // 控制是否生成，以及如何生成 source map，配置项很多，cheap-module-eval-source-map表示原始源代码（仅限行）
-    devtool: 'none',
+    devtool: 'source-map',
 
     externals: [
         {
@@ -44,7 +45,7 @@ const mainConfig = {
             maxInitialRequests: Infinity,
             minSize: 0,
             cacheGroups: {
-                vendor: {
+                defaultVendors: {
                     minChunks: 1,
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendor'
@@ -60,8 +61,8 @@ const mainConfig = {
         minimizer: [
             // 压缩js
             new TerserWebpackPlugin({
-                cache: true,
-                parallel: false,
+                test: /\.js(\?.*)?$/i,
+                parallel: true,
                 terserOptions: {
                     output: {
                         comments: false
@@ -69,6 +70,7 @@ const mainConfig = {
                 },
                 extractComments: false
             }),
+            new CssMinimizerPlugin(),
 
             // 压缩css
             new OptimizeCssAssetsPlugin({

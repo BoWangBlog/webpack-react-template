@@ -1,10 +1,10 @@
 {
-	"mobx": "^5.15.4",
-	"mobxReact": "^6.2.2",
+	"mobx": "^6.1.8",
+	"mobxReact": "^7.1.0",
 	"nprogress": "^0.2.0",
-	"react": "^16.13.1",
-	"reactDom": "^16.13.1",
+	"react": "^17.0.1",
+	"reactDom": "^17.0.1",
 	"reactRouter": "^5.2.0",
 	"reactRouterDom": "^5.2.0",
-	"antd": "^4.5.2"
+	"antd": "^4.13.1"
 }
