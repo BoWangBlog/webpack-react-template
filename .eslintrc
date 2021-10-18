@@ -1,13 +1,49 @@
 {
-    "extends": ["airbnb", "prettier", "eslint:recommended"],
-    "plugins": ["prettier"],
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
     "settings": {
         "import/resolver": {
+            "node": {
+                "paths": ["src"],
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            },
             "webpack": {
                 "config": "./webpack-common.config.js"
             }
         }
     },
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended",
+        "plugin:react/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly",
+        "window": true,
+        "document": true,
+        "localStorage": true,
+        "FormData": true,
+        "FileReader": true,
+        "Blob": true,
+        "XMLHttpRequest": true,
+        "navigator": true
+    },
+    "plugins": [
+        "import",
+        "react",
+        "jsx-a11y"
+    ],
     "rules": {
         "react/jsx-filename-extension": [
             1,
@@ -66,16 +102,6 @@
         "space-infix-ops": ["error"],
         "react/sort-comp": "off",
         "jsx-a11y/label-has-associated-control": "off"
-    },
-    "globals": {
-        "window": true,
-        "document": true,
-        "localStorage": true,
-        "FormData": true,
-        "FileReader": true,
-        "Blob": true,
-        "XMLHttpRequest": true,
-        "navigator": true
     },
     "parser": "babel-eslint"
 }

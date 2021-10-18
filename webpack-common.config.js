@@ -9,7 +9,6 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HappyPack = require('happypack');
 
 const resolve = dir => path.resolve(__dirname, dir);
 
@@ -21,7 +20,7 @@ module.exports = () => ({
             {
                 test: /\.(jsx|js)?$/,
                 // thread-loader：放置在这个 loader 之后的 loader 就会在一个单独的 worker 池中运行
-                use: ['thread-loader', 'cache-loader', 'babel-loader?cacheDirectory=true', 'eslint-loader'],
+                use: ['thread-loader', 'babel-loader?cacheDirectory=true'],
                 exclude: resolve('node_modules')
             },
             {
@@ -65,7 +64,8 @@ module.exports = () => ({
                             outputPath: 'assets' // 文件过多时输出到名称为assets的文件夹中
                         }
                     }
-                ]
+                ],
+                exclude: resolve('questions')
             },
             {
                 test: /\.svg$/,
@@ -121,26 +121,7 @@ module.exports = () => ({
             cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, 'dist')]
         }),
 
-        new HappyPack({
-            id: 'babel',
-            verbose: true,
-            loaders: [
-                {
-                    loader: 'babel-loader',
-                    query: {
-                        presets: ['env', 'react']
-                    }
-                }
-            ]
-        }),
-
-        // 抽离css
-        new MiniCssExtractPlugin({
-            ignoreOrder: true,
-            filename: '[name].css',
-            chunkFilename: '[name]_[contenthash:6].css'
-        }),
-
+        new MiniCssExtractPlugin(),
         // 打包进度
         new webpack.ProgressPlugin(),
 

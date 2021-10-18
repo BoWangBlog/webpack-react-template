@@ -6,15 +6,14 @@
  */
 
 const { merge } = require('webpack-merge');
-// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const commonConfig = require('./webpack-common.config');
 
-// const smp = new SpeedMeasurePlugin();
+const smp = new SpeedMeasurePlugin();
 const cdnVersion = require('./cdn-version.json');
 
 const mainConfig = {
@@ -70,18 +69,7 @@ const mainConfig = {
                 },
                 extractComments: false
             }),
-            new CssMinimizerPlugin(),
-
-            // 压缩css
-            new OptimizeCssAssetsPlugin({
-                assetNameRegExp: /\.css$/g,
-                cssProcessor: require('cssnano'),
-                cssProcessorOptions: {
-                    discardComments: { removeAll: true },
-                    minifyGradients: true
-                },
-                canPrint: true
-            })
+            new CssMinimizerPlugin()
         ]
     },
 
@@ -104,5 +92,4 @@ const mainConfig = {
 };
 
 // smp.wrap loader所用打包时间
-// module.exports = smp.wrap(merge(mainConfig, commonConfig(true)));
-module.exports = merge(mainConfig, commonConfig(true));
+module.exports = smp.wrap(merge(mainConfig, commonConfig(true)));
